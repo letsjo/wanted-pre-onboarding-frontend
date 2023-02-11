@@ -19,7 +19,7 @@ const AuthForm = ({ data }) => {
         />
       ))}
       <AuthButton text={button.text} id={button.testId} />
-      <AuthToggle text={toggle.text} />
+      <AuthToggle text={toggle.text} handleNavigate={toggle.handleNavigate} />
     </Styled.LoginForm>
   );
 };

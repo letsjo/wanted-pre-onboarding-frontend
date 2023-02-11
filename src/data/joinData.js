@@ -20,6 +20,6 @@ export const joinData = {
   },
   toggle: {
     text: '이미 회원이신가요? 로그인',
-    onClick: () => { },
+    handleNavigate: '/signin',
   }
 }

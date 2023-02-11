@@ -20,6 +20,6 @@ export const loginData = {
   },
   toggle: {
     text: '아직 회원이 아니신가요? 회원가입',
-    onClick: () => { },
+    handleNavigate: '/signup',
   }
 }
