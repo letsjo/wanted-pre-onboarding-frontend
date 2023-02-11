@@ -1,9 +1,9 @@
 import { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const Login = lazy(() => import('./pages/Login'));
-const Join = lazy(() => import('./pages/Join'));
-const Todo = lazy(() => import('./pages/Todo'));
+const Login = lazy(() => import('pages/Login'));
+const Join = lazy(() => import('pages/Join'));
+const Todo = lazy(() => import('pages/Todo'));
 
 function App() {
   return (
