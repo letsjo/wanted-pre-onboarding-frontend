@@ -8,17 +8,12 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         font-family: 'Noto Sans KR', sans-serif;
     };
-        button{
-        display: flex;
-        cursor: pointer;
-        outline: none;
-        border-radius: 3px;
+    *{
+        box-sizing: border-box;
     };
-        input{
-        display: flex;
-        outline: none;
-        padding-left: 10px;
-    }
+    input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
+    };
 `;
 
 export { GlobalStyle };
