@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AuthForm from 'components/public/AuthForm';
+import AuthForm from 'components/auth/AuthForm';
 
 import { joinData } from 'data/joinData';
 
