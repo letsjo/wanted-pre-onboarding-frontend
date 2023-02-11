@@ -12,8 +12,9 @@ export const Styled = {
     left: 0;
     opacity: 1;
   `,
-  LoginTitle: styled.h2`
+  LoginTitle: styled.div`
     text-align: center;
     margin-bottom: 40px;
+    font-size: 1.5rem;
   `,
 };
