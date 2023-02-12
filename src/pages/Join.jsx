@@ -3,11 +3,13 @@ import styled from 'styled-components';
 
 import AuthForm from 'components/layout/sign/AuthForm';
 
+import { joinData } from 'data/joinData';
 import {
   EmailValidation,
   PasswordValidation,
 } from 'components/feature/validation';
-import { joinData } from 'data/joinData';
+import { signUpApi } from 'apis/sign';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   position: relative;
@@ -19,6 +21,7 @@ const Container = styled.div`
 `;
 
 const Join = () => {
+  const navigate = useNavigate();
   const [userData, setUserDate] = useState({
     email: '',
     password: '',
@@ -36,9 +39,24 @@ const Join = () => {
     setUserDate({ ...userData, password: '' });
   };
 
+  const handleClick = (e, userData) => {
+    e.preventDefault();
+    console.log(userData);
+    signUpApi(userData)
+      .then(() => {
+        e.target.reset();
+        alert('회원가입이 완료되었습니다.');
+        navigate('/signin');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   joinData.inputs['email'].onChange = onChangeEmail;
   joinData.inputs['password'].onChange = onChangePassword;
-  joinData.button.data = userData;
+  joinData.button.userData = userData;
+  joinData.button.handleClick = handleClick;
 
   return (
     <Container>
