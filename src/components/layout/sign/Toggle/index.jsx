@@ -2,7 +2,7 @@ import React from 'react';
 import { Styled } from './style';
 import { useNavigate } from 'react-router-dom';
 
-const AuthToggle = ({ ToggleData }) => {
+const Toggle = ({ ToggleData }) => {
   const { text, handleNavigate } = ToggleData;
   const navigate = useNavigate();
   return (
@@ -12,4 +12,4 @@ const AuthToggle = ({ ToggleData }) => {
   );
 };
 
-export default AuthToggle;
+export default Toggle;

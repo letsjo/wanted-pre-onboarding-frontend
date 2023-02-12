@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Styled } from './style';
 
-const AuthButton = ({ ButtonData }) => {
+const Button = ({ ButtonData }) => {
   const { text, testId, handleClick, userData } = ButtonData;
   const [active, setActive] = useState(false);
   useEffect(() => {
@@ -20,4 +20,4 @@ const AuthButton = ({ ButtonData }) => {
   );
 };
 
-export default AuthButton;
+export default Button;

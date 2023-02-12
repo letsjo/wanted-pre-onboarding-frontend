@@ -1,16 +1,17 @@
 import React from 'react';
 import { Styled } from './style';
 
-const AuthInput = ({ InputData }) => {
-  const { type, placeholder, testId, onChange } = InputData;
+const Input = ({ InputData }) => {
+  const { type, placeholder, testId, onChange, autoComplete } = InputData;
   return (
     <Styled.Input
       data-testid={testId}
       type={type}
       placeholder={placeholder}
       onChange={onChange}
+      autoComplete={autoComplete}
     />
   );
 };
 
-export default AuthInput;
+export default Input;
