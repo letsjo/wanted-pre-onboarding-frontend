@@ -5,7 +5,7 @@ export const Styled = {
     width: 100%;
     height: 100%;
     background-color: #fff;
-    padding: 60px;
+    padding: 60px 100px;
     box-sizing: border-box;
     position: absolute;
     top: 0;
