@@ -14,5 +14,9 @@ export const Styled = {
     :hover {
       background-color: #1dd971;
     }
+    :disabled {
+      background-color: #adadad;
+      cursor: auto;
+    }
   `,
 };

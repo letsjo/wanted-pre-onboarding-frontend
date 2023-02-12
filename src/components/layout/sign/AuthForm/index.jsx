@@ -7,21 +7,21 @@ import AuthToggle from '../AuthToggle';
 
 const AuthForm = ({ data }) => {
   const { title, inputs, button, toggle } = data;
-  console.log(inputs);
   return (
-    <Styled.LoginForm>
-      <Styled.LoginTitle>{title}</Styled.LoginTitle>
+    <Styled.Form>
+      <Styled.Title>{title}</Styled.Title>
       {Object.values(inputs).map((input) => (
         <AuthInput
           key={input.id}
+          id={input.testId}
           type={input.type}
           placeholder={input.placeholder}
-          id={input.testId}
+          onChange={input.onChange}
         />
       ))}
-      <AuthButton text={button.text} id={button.testId} />
+      <AuthButton id={button.testId} text={button.text} data={button.data} />
       <AuthToggle text={toggle.text} handleNavigate={toggle.handleNavigate} />
-    </Styled.LoginForm>
+    </Styled.Form>
   );
 };
 
