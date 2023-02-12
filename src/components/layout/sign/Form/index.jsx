@@ -1,6 +1,6 @@
 import { Styled } from './style';
 
-import Input from '../Input';
+import Input from 'components/layout/public/Input';
 import Button from '../Button';
 import Toggle from '../Toggle';
 
