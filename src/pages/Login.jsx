@@ -13,7 +13,7 @@ import useRedirect from 'hooks/useRedirect';
 
 const Container = styled.div`
   position: relative;
-  width: 450px;
+  width: 500px;
   height: 450px;
   margin: 50px auto;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
