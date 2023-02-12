@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import AuthForm from 'components/layout/sign/AuthForm';
+import Form from 'components/layout/sign/Form';
 
 import { loginData } from 'data/loginData';
 import {
@@ -9,6 +9,7 @@ import {
 } from 'components/feature/validation';
 import { signInApi } from 'apis/sign';
 import { useNavigate } from 'react-router-dom';
+import useRedirect from 'hooks/useRedirect';
 
 const Container = styled.div`
   position: relative;
@@ -20,6 +21,7 @@ const Container = styled.div`
 `;
 
 const Login = () => {
+  useRedirect();
   const navigate = useNavigate();
   const [userData, setUserDate] = useState({
     email: '',
@@ -47,17 +49,19 @@ const Login = () => {
         alert('로그인에 성공하였습니다.');
         navigate('/todo');
       })
-      .catch((err) => console.log(err));
+      .catch(() => {
+        alert('로그인 실패! 로그인 정보를 확인해주세요.');
+      });
   };
 
   loginData.inputs['email'].onChange = onChangeEmail;
   loginData.inputs['password'].onChange = onChangePassword;
-  loginData.button.userData = userData;
-  loginData.button.handleClick = handleClick;
+  loginData.buttonData.userData = userData;
+  loginData.buttonData.handleClick = handleClick;
 
   return (
     <Container>
-      <AuthForm data={loginData} />
+      <Form data={loginData} />
     </Container>
   );
 };
