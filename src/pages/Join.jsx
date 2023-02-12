@@ -15,6 +15,7 @@ const Container = styled.div`
 `;
 
 const Join = () => {
+  joinData.inputs['email'].onChange = (e) => {};
   return (
     <Container>
       <AuthForm data={joinData} />
