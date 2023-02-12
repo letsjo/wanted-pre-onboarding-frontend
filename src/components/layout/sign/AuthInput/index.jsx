@@ -1,10 +1,11 @@
 import React from 'react';
 import { Styled } from './style';
 
-const AuthInput = ({ type, placeholder, id, onChange }) => {
+const AuthInput = ({ InputData }) => {
+  const { type, placeholder, testId, onChange } = InputData;
   return (
     <Styled.Input
-      data-testid={id}
+      data-testid={testId}
       type={type}
       placeholder={placeholder}
       onChange={onChange}

@@ -9,18 +9,26 @@ export const userClient = axios.create({
 
 userClient.interceptors.request.use(
   (config) => {
-    console.log('request success', config);
+    const accessToken = localStorage.getItem('access_token');
+
+    if (accessToken && config.headers) {
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
+    }
+    return config;
   },
   (error) => {
     console.log('request error', error);
+    return error;
   },
 );
 
-userClient.interceptors.request.use(
+userClient.interceptors.response.use(
   (response) => {
     console.log('response success', response);
+    return response;
   },
   (error) => {
     console.log('response error', error);
+    return error;
   },
 );

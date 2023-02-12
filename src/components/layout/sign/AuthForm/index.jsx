@@ -11,16 +11,10 @@ const AuthForm = ({ data }) => {
     <Styled.Form>
       <Styled.Title>{title}</Styled.Title>
       {Object.values(inputs).map((input) => (
-        <AuthInput
-          key={input.id}
-          id={input.testId}
-          type={input.type}
-          placeholder={input.placeholder}
-          onChange={input.onChange}
-        />
+        <AuthInput key={input.id} InputData={input} />
       ))}
-      <AuthButton id={button.testId} text={button.text} data={button.data} />
-      <AuthToggle text={toggle.text} handleNavigate={toggle.handleNavigate} />
+      <AuthButton ButtonData={button} />
+      <AuthToggle ToggleData={toggle} />
     </Styled.Form>
   );
 };

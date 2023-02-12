@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
 import { Styled } from './style';
 
-const AuthButton = ({ text, id, data }) => {
+const AuthButton = ({ ButtonData }) => {
+  const { text, testId, handleClick, userData } = ButtonData;
   const [active, setActive] = useState(false);
   useEffect(() => {
-    if (Object.values(data).every((value) => value !== ''))
+    if (Object.values(userData).every((value) => value !== ''))
       return setActive(true);
     setActive(false);
-  }, [data]);
+  }, [userData]);
   return (
-    <Styled.Button data-testid={id} disabled={active ? false : true}>
+    <Styled.Button
+      data-testid={testId}
+      onClick={(e) => handleClick(e, userData)}
+      disabled={active ? false : true}
+    >
       {text}
     </Styled.Button>
   );

@@ -7,6 +7,8 @@ import {
   EmailValidation,
   PasswordValidation,
 } from 'components/feature/validation';
+import { signInApi } from 'apis/sign';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
   position: relative;
@@ -18,6 +20,7 @@ const Container = styled.div`
 `;
 
 const Login = () => {
+  const navigate = useNavigate();
   const [userData, setUserDate] = useState({
     email: '',
     password: '',
@@ -35,9 +38,22 @@ const Login = () => {
     setUserDate({ ...userData, password: '' });
   };
 
+  const handleClick = (e, userData) => {
+    e.preventDefault();
+    console.log(userData);
+    signInApi(userData)
+      .then((res) => {
+        localStorage.setItem('access_token', res.data.access_token);
+        alert('로그인에 성공하였습니다.');
+        navigate('/todo');
+      })
+      .catch((err) => console.log(err));
+  };
+
   loginData.inputs['email'].onChange = onChangeEmail;
   loginData.inputs['password'].onChange = onChangePassword;
-  loginData.button.data = userData;
+  loginData.button.userData = userData;
+  loginData.button.handleClick = handleClick;
 
   return (
     <Container>
