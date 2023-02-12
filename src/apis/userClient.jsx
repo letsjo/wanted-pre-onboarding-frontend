@@ -18,7 +18,7 @@ userClient.interceptors.request.use(
   },
   (error) => {
     console.log('request error', error);
-    return error;
+    return Promise.reject(error);
   },
 );
 
@@ -29,6 +29,6 @@ userClient.interceptors.response.use(
   },
   (error) => {
     console.log('response error', error);
-    return error;
+    return Promise.reject(error);
   },
 );
