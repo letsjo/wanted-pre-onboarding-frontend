@@ -6,7 +6,7 @@ const CardModify = ({ modify }) => {
   return (
     <Styled.ModifyWrap style={{ display: modify ? 'flex' : 'none' }}>
       <Input InputData={{ type: 'text', placeholder: '할 일을 적어주세요.' }} />
-      <SmallButton text={'작성'} />
+      <SmallButton ButtonData={{ text: '작성' }} />
     </Styled.ModifyWrap>
   );
 };

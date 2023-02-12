@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { flexCenter } from 'styles/modules';
 
 export const Styled = {
-  DisplayWrap: styled.div`
+  DisplayWrap: styled.label`
     ${flexCenter('row')}
     width: 100%;
   `,

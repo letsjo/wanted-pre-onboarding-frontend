@@ -6,8 +6,8 @@ const CardDisplay = ({ modify }) => {
     <Styled.DisplayWrap style={{ display: modify ? 'none' : 'flex' }}>
       <Styled.CheckBox type='checkbox' />
       <Styled.TodoTitle>할 일 적기</Styled.TodoTitle>
-      <SmallButton text='수정' />
-      <SmallButton text='삭제' />
+      <SmallButton ButtonData={{ text: '수정' }} />
+      <SmallButton ButtonData={{ text: '삭제' }} />
     </Styled.DisplayWrap>
   );
 };
