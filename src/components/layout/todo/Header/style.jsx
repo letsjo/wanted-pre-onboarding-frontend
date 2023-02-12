@@ -16,7 +16,7 @@ export const Styled = {
   `,
   Button: styled.button`
     ${flexCenter('row')}
-    background-color: #03c75b;
+    background-color: #4a4a4a;
     color: #fff;
     font-size: 16px;
     font-weight: bold;
@@ -24,7 +24,7 @@ export const Styled = {
     padding: 12px;
     border-radius: 5px;
     :hover {
-      background-color: #1dd971;
+      background-color: #616161;
     }
   `,
 };
