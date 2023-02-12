@@ -12,13 +12,14 @@ export const joinData = {
       type: 'password',
       placeholder: '비밀번호',
       testId: 'password-input',
+      autoComplete: 'off',
     },
   },
-  button: {
+  buttonData: {
     text: '가입하기',
     testId: 'signup-button',
   },
-  toggle: {
+  toggleData: {
     text: '이미 회원이신가요? 로그인',
     handleNavigate: '/signin',
   }
