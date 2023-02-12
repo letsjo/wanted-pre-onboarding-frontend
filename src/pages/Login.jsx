@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import AuthForm from 'components/layout/auth/AuthForm';
+import AuthForm from 'components/layout/sign/AuthForm';
 
 import { loginData } from 'data/loginData';
 
