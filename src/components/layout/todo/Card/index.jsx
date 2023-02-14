@@ -3,12 +3,12 @@ import { Styled } from './style';
 import CardDisplay from '../CardDisplay';
 import CardModify from '../CardModify';
 
-const Card = () => {
+const Card = ({ todoData }) => {
   const [modify, setModify] = useState(false);
   return (
     <Styled.Container>
-      <CardDisplay modify={modify} setModify={setModify} />
-      <CardModify modify={modify} setModify={setModify} />
+      <CardDisplay todoData={todoData} modify={modify} setModify={setModify} />
+      <CardModify todoData={todoData} modify={modify} setModify={setModify} />
     </Styled.Container>
   );
 };

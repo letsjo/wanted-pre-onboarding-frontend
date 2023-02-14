@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { flexCenter } from 'styles/modules';
 
 export const Styled = {
   Container: styled.li`
