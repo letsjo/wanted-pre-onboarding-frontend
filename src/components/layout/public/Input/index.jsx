@@ -8,7 +8,7 @@ const Input = ({ InputData }) => {
       data-testid={testId}
       type={type}
       placeholder={placeholder}
-      value={value}
+      defaultValue={value}
       onChange={onChange}
       autoComplete={autoComplete}
     />
