@@ -1,17 +1,17 @@
 import { userClient } from 'apis/userClient';
 
-export const getTodoApi = async () => {
+export const getTodoApi = () => {
   return userClient.get('/todos');
 };
 
-export const createTodoApi = async ({ todo }) => {
+export const createTodoApi = ({ todo }) => {
   return userClient.post('/todos', { todo });
 };
 
-export const updateTodoApi = async ({ id, todo, isCompleted }) => {
+export const updateTodoApi = ({ id, todo, isCompleted }) => {
   return userClient.put(`/todos/${id}`, { todo, isCompleted });
 };
 
-export const deleteTodoApi = async ({ id }) => {
+export const deleteTodoApi = ({ id }) => {
   return userClient.delete(`/todos/${id}`);
 };
