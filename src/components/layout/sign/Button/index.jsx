@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Styled } from './style';
+import Validator from 'utils/Validator';
 
 const Button = ({ ButtonData }) => {
   const { text, testId, handleClick, userData } = ButtonData;
   const [active, setActive] = useState(false);
   useEffect(() => {
-    if (Object.values(userData).every((value) => value !== ''))
+    if (
+      Validator.hasEmailAtSign(userData.email) &&
+      Validator.hasPasswordMinimumLength(userData.password)
+    ) {
       return setActive(true);
+    }
+
     setActive(false);
   }, [userData]);
   return (

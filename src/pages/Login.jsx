@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Form from 'components/layout/sign/Form';
-
-import { loginData } from 'data/loginData';
-import {
-  EmailValidation,
-  PasswordValidation,
-} from 'components/feature/validation';
-import { signInApi } from 'apis/sign';
 import { useNavigate } from 'react-router-dom';
+import { signInApi } from 'apis/sign';
 import useRedirect from 'hooks/useRedirect';
+import { handleError } from 'utils/handleError';
+
+import Form from 'components/layout/sign/Form';
+import Validator from 'utils/Validator';
+import { Message } from 'constants/Message';
 
 const Container = styled.div`
   position: relative;
@@ -29,35 +27,65 @@ const Login = () => {
   });
 
   const onChangeEmail = (e) => {
-    if (EmailValidation(e.target.value))
-      return setUserDate({ ...userData, email: e.target.value });
-    setUserDate({ ...userData, email: '' });
+    setUserDate({ ...userData, email: e.target.value });
   };
 
   const onChangePassword = (e) => {
-    if (PasswordValidation(e.target.value))
-      return setUserDate({ ...userData, password: e.target.value });
-    setUserDate({ ...userData, password: '' });
+    setUserDate({ ...userData, password: e.target.value });
   };
 
-  const handleClick = (e, userData) => {
+  const handleSignIn = (e, userData) => {
     e.preventDefault();
-    console.log(userData);
-    signInApi(userData)
-      .then((res) => {
-        localStorage.setItem('access_token', res.data.access_token);
-        alert('로그인에 성공하였습니다.');
-        navigate('/todo');
-      })
-      .catch(() => {
-        alert('로그인 실패! 로그인 정보를 확인해주세요.');
-      });
+    if (
+      Validator.isValidEmail(userData.email) &&
+      Validator.isValidPassword(userData.password)
+    ) {
+      signInApi(userData)
+        .then((res) => {
+          handleSuccess(res);
+        })
+        .catch(() => {
+          handleError(Message.process.fail);
+        });
+    }
   };
 
-  loginData.inputs['email'].onChange = onChangeEmail;
-  loginData.inputs['password'].onChange = onChangePassword;
-  loginData.buttonData.userData = userData;
-  loginData.buttonData.handleClick = handleClick;
+  const handleSuccess = (res) => {
+    localStorage.setItem('access_token', res.data.access_token);
+    alert(Message.process.success);
+    navigate('/todo');
+  };
+
+  const loginData = {
+    title: "TODAY'S TO DO",
+    inputs: {
+      email: {
+        id: 1,
+        type: 'text',
+        placeholder: '아이디 또는 이메일',
+        testId: 'email-input',
+        onChange: onChangeEmail,
+      },
+      password: {
+        id: 2,
+        type: 'password',
+        placeholder: '비밀번호',
+        testId: 'password-input',
+        autoComplete: 'off',
+        onChange: onChangePassword,
+      },
+    },
+    buttonData: {
+      text: '로그인',
+      testId: 'signin-button',
+      userData: userData,
+      handleClick: handleSignIn,
+    },
+    toggleData: {
+      text: '아직 회원이 아니신가요? 회원가입',
+      handleNavigate: '/signup',
+    },
+  };
 
   return (
     <Container>

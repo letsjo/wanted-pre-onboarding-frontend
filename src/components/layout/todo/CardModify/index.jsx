@@ -36,7 +36,7 @@ const CardModify = ({ todoData, modify, setModify }) => {
           testId: 'modify-input',
           placeholder: '할 일을 적어주세요.',
           onChange: onChangeModify,
-          value: modifyTodo,
+          defaultValue: modifyTodo,
         }}
       />
       <SmallButton
