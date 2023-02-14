@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import useRedirect from 'hooks/useRedirect';
 import Header from 'components/layout/todo/Header';
-import CreateSection from 'components/layout/todo/CreateSection';
+import CreateCard from 'components/layout/todo/CreateCard';
 import ListSection from 'components/layout/todo/ListSection';
 
 const Container = styled.div`
@@ -23,26 +23,10 @@ const Container = styled.div`
 const Todo = () => {
   useRedirect();
 
-  const navigate = useNavigate();
-  const [todoData, setTodoData] = useState();
-
-  useEffect(() => {
-    const getData = () => {
-      getTodoApi()
-        .then((res) => {
-          setTodoData(res.data);
-        })
-        .catch(() => {
-          navigate('/');
-        });
-    };
-    getData();
-  }, []);
-
   return (
     <Container>
       <Header />
-      <CreateSection />
+      <CreateCard />
       <ListSection />
     </Container>
   );
