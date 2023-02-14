@@ -12,6 +12,10 @@ export const updateTodoApi = ({ id, todo, isCompleted }) => {
   return userClient.put(`/todos/${id}`, { todo, isCompleted });
 };
 
+export const isCompletedApi = ({ id, isCompleted }) => {
+  return userClient.patch(`/todos/${id}`, { isCompleted });
+};
+
 export const deleteTodoApi = ({ id }) => {
   return userClient.delete(`/todos/${id}`);
 };
