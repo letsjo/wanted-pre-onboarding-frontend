@@ -20,9 +20,6 @@ const CardDisplay = ({ todoData, modify, setModify }) => {
     })
       .then((res) => {
         dispatch({ type: 'UPDATE', payload: res.data });
-        e.target.checked
-          ? alert(`[${todoData.todo}] 를 완료했습니다.`)
-          : alert(`[${todoData.todo}] 를 시작해주세요!`);
       })
       .catch((error) => {
         e.target.checked = todoData.isCompleted;
