@@ -11,7 +11,7 @@ const useRedirect = () => {
       return navigate('/');
     if (accessToken !== null && location.pathname !== '/todo')
       return navigate('/todo');
-  }, []);
+  });
 };
 
 export default useRedirect;
