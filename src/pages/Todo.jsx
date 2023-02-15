@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 import useRedirect from 'hooks/useRedirect';
 import Header from 'components/layout/todo/Header';
-import CreateCard from 'components/layout/todo/CreateCard';
+import CardCreate from 'components/layout/todo/CardCreate';
 import ListSection from 'components/layout/todo/ListSection';
+
+import TodoProvider from 'context/TodoProvider';
 
 const Container = styled.div`
   display: flex;
@@ -23,8 +25,10 @@ const Todo = () => {
   return (
     <Container>
       <Header />
-      <CreateCard />
-      <ListSection />
+      <TodoProvider>
+        <CardCreate />
+        <ListSection />
+      </TodoProvider>
     </Container>
   );
 };
