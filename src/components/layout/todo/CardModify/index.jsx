@@ -12,7 +12,8 @@ const CardModify = ({ todoData, modify, setModify }) => {
 
   const [modifyTodo, setModifyTodo] = useState(todoData.todo);
 
-  const handleUpdate = () => {
+  const handleUpdate = ({ e }) => {
+    e.preventDefault();
     updateTodoApi({
       id: todoData.id,
       todo: modifyTodo,
@@ -30,13 +31,14 @@ const CardModify = ({ todoData, modify, setModify }) => {
       });
   };
 
-  const handleCancel = () => {
+  const handleCancel = ({ e }) => {
+    e.preventDefault();
     inputRef.current.value = todoData.todo;
     setModify(false);
   };
 
-  const onChangeModify = (e) => {
-    setModifyTodo(e.target.value);
+  const onChangeModify = () => {
+    setModifyTodo(inputRef.current.value);
   };
 
   return (
