@@ -2,25 +2,35 @@ import { updateTodoApi } from 'apis/todo';
 import { Styled } from './style';
 import Input from 'components/layout/public/Input';
 import SmallButton from 'components/layout/public/SmallButton';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useContext, useRef } from 'react';
+import { dispatchContext } from 'context/TodoProvider';
 
 const CardModify = ({ todoData, modify, setModify }) => {
-  const { id, todo, isCompleted } = todoData;
-  const [modifyTodo, setModifyTodo] = useState(todo);
-  const handleSubmit = () => {
-    updateTodoApi({ id, todo: modifyTodo, isCompleted })
+  const dispatch = useContext(dispatchContext);
+  const inputRef = useRef();
+
+  const [modifyTodo, setModifyTodo] = useState(todoData.todo);
+
+  const handleUpdate = () => {
+    updateTodoApi({
+      id: todoData.id,
+      todo: modifyTodo,
+      isCompleted: todoData.isCompleted,
+    })
       .then((res) => {
-        console.log(res);
+        dispatch({ type: 'UPDATE', payload: res.data });
+        setModify(false);
         alert('할 일이 수정되었습니다.');
       })
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
+        setModify(false);
+        inputRef.current.value = todoData.todo;
         alert('할 일 수정에 실패했습니다.');
       });
   };
 
   const handleCancel = () => {
+    inputRef.current.value = todoData.todo;
     setModify(false);
   };
 
@@ -37,13 +47,14 @@ const CardModify = ({ todoData, modify, setModify }) => {
           placeholder: '할 일을 적어주세요.',
           onChange: onChangeModify,
           defaultValue: modifyTodo,
+          inputRef: inputRef,
         }}
       />
       <SmallButton
         ButtonData={{
           text: '제출',
           testId: 'submit-button',
-          handleClick: handleSubmit,
+          handleClick: handleUpdate,
         }}
       />
       <SmallButton
