@@ -1,6 +1,3 @@
-import { getTodoApi } from 'apis/todo';
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import useRedirect from 'hooks/useRedirect';
