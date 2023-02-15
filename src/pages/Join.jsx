@@ -44,8 +44,8 @@ const Join = () => {
         .then(() => {
           handleSuccess();
         })
-        .catch(() => {
-          handleError(Message.process.fail);
+        .catch((error) => {
+          handleError(error);
         });
     }
   };

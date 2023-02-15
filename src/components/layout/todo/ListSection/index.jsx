@@ -3,6 +3,7 @@ import Card from '../Card';
 import { Styled } from './style';
 import { getTodoApi } from 'apis/todo';
 import { todoContext, dispatchContext } from 'context/TodoProvider';
+import { handleError } from 'utils/handleError';
 
 const ListSection = () => {
   const todoList = useContext(todoContext);
@@ -14,8 +15,8 @@ const ListSection = () => {
         .then((res) => {
           dispatch({ type: 'GET', payload: res.data });
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          handleError(error);
         });
     };
     getTodoList();

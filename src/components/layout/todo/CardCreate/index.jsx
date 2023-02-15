@@ -4,6 +4,7 @@ import SmallButton from 'components/layout/public/SmallButton';
 import { useContext, useRef, useState } from 'react';
 import { createTodoApi } from 'apis/todo';
 import { dispatchContext } from 'context/TodoProvider';
+import { handleError } from 'utils/handleError';
 
 const CardCreate = () => {
   const dispatch = useContext(dispatchContext);
@@ -17,8 +18,10 @@ const CardCreate = () => {
 
   const handleCreate = ({ e }) => {
     e.preventDefault();
-    if (todo.trim().length <= 0) return alert('공백은 추가 할 수 없습니다.');
-    if (typeof todo !== 'string') return alert('문자형만 추가할 수 있습니다.');
+    if (todo.trim().length <= 0)
+      return handleError('공백은 추가 할 수 없습니다.');
+    if (typeof todo !== 'string')
+      return handleError('문자형만 추가할 수 있습니다.');
     createTodoApi({ todo })
       .then((res) => {
         inputRef.current.value = '';
@@ -26,9 +29,7 @@ const CardCreate = () => {
         alert('할 일이 추가되었습니다.');
       })
       .catch((error) => {
-        alert(
-          `추가에 실패하였습니다. \nERROR : ${error.response.data.message}`,
-        );
+        handleError(error);
       });
   };
 

@@ -44,8 +44,8 @@ const Login = () => {
         .then((res) => {
           handleSuccess(res);
         })
-        .catch(() => {
-          handleError(Message.process.fail);
+        .catch((error) => {
+          handleError(error);
         });
     }
   };
