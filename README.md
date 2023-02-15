@@ -20,6 +20,10 @@ npm install
 npm install
 ```
 
+## 블로그 숏에세이
+
+[[원티드 프리온보딩 인턴십] 숏 에세이](https://velog.io/@gusdh2/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C-%EC%9D%B8%ED%84%B4%EC%8B%AD)
+
 ## 🎬 데모 영상
 
 [제출용 데모 영상](https://youtu.be/chgTq021Nsc)
