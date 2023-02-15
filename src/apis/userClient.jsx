@@ -7,28 +7,11 @@ export const userClient = axios.create({
   },
 });
 
-userClient.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem('access_token');
+userClient.interceptors.request.use((config) => {
+  const accessToken = localStorage.getItem('access_token');
 
-    if (accessToken && config.headers) {
-      config.headers['Authorization'] = `Bearer ${accessToken}`;
-    }
-    return config;
-  },
-  (error) => {
-    console.log('request error', error);
-    return Promise.reject(error);
-  },
-);
-
-userClient.interceptors.response.use(
-  (response) => {
-    console.log('response success', response);
-    return response;
-  },
-  (error) => {
-    console.log('response error', error);
-    return Promise.reject(error);
-  },
-);
+  if (accessToken && config.headers) {
+    config.headers['Authorization'] = `Bearer ${accessToken}`;
+  }
+  return config;
+});
