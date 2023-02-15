@@ -1,8 +1,15 @@
 import { Styled } from './style';
 
 const Input = ({ InputData }) => {
-  const { type, placeholder, testId, onChange, autoComplete, defaultValue } =
-    InputData;
+  const {
+    type,
+    placeholder,
+    testId,
+    onChange,
+    autoComplete,
+    defaultValue,
+    inputRef,
+  } = InputData;
   return (
     <Styled.Input
       data-testid={testId}
@@ -11,6 +18,7 @@ const Input = ({ InputData }) => {
       defaultValue={defaultValue}
       onChange={onChange}
       autoComplete={autoComplete}
+      ref={inputRef}
     />
   );
 };
