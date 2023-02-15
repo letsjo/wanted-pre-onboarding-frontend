@@ -1,8 +1,30 @@
 # 원티드 프리온보딩 프론트엔드 - 선발 과제
 
-## 데모 영상
+## 🚀 프로젝트 실행 방법
+
+1. root 경로에 .env 파일 생성
+
+```
+REACT_APP_API_URL=https://pre-onboarding-selection-task.shop/
+```
+
+2. 패키지 설치
+
+```
+npm install
+```
+
+3. 프로젝트 실행
+
+```
+npm install
+```
+
+## 🎬 데모 영상
 
 [제출용 데모 영상](https://youtu.be/chgTq021Nsc)
+
+---
 
 ## 기능 구현 목록
 
