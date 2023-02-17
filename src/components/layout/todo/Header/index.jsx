@@ -6,6 +6,7 @@ const Header = () => {
   const onLogout = () => {
     localStorage.removeItem('access_token');
     navigator('/');
+    alert('로그아웃 되었습니다.');
   };
 
   return (

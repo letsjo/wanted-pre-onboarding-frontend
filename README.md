@@ -28,6 +28,8 @@ npm install
 
 [제출용 데모 영상](https://youtu.be/chgTq021Nsc)
 
+![2023-02-15 23-09-28 mp4_20230217_023047](https://user-images.githubusercontent.com/98210863/219443112-bd9c73da-ab3e-4b97-a3c0-4b19afcf2bd4.gif)
+
 ---
 
 ## 기능 구현 목록

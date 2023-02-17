@@ -4,6 +4,7 @@ import Input from 'components/layout/public/Input';
 import SmallButton from 'components/layout/public/SmallButton';
 import { useState, useContext, useRef } from 'react';
 import { dispatchContext } from 'context/TodoProvider';
+import { handleError } from 'utils/handleError';
 
 const CardModify = ({ todoData, modify, setModify }) => {
   const dispatch = useContext(dispatchContext);
@@ -11,7 +12,8 @@ const CardModify = ({ todoData, modify, setModify }) => {
 
   const [modifyTodo, setModifyTodo] = useState(todoData.todo);
 
-  const handleUpdate = () => {
+  const handleUpdate = ({ e }) => {
+    e.preventDefault();
     updateTodoApi({
       id: todoData.id,
       todo: modifyTodo,
@@ -22,20 +24,21 @@ const CardModify = ({ todoData, modify, setModify }) => {
         setModify(false);
         alert('할 일이 수정되었습니다.');
       })
-      .catch(() => {
+      .catch((error) => {
         setModify(false);
         inputRef.current.value = todoData.todo;
-        alert('할 일 수정에 실패했습니다.');
+        handleError(error);
       });
   };
 
-  const handleCancel = () => {
+  const handleCancel = ({ e }) => {
+    e.preventDefault();
     inputRef.current.value = todoData.todo;
     setModify(false);
   };
 
-  const onChangeModify = (e) => {
-    setModifyTodo(e.target.value);
+  const onChangeModify = () => {
+    setModifyTodo(inputRef.current.value);
   };
 
   return (

@@ -3,6 +3,7 @@ import SmallButton from 'components/layout/public/SmallButton';
 import { deleteTodoApi, updateTodoApi } from 'apis/todo';
 import { useContext } from 'react';
 import { dispatchContext } from 'context/TodoProvider';
+import { handleError } from 'utils/handleError';
 
 const CardDisplay = ({ todoData, modify, setModify }) => {
   const dispatch = useContext(dispatchContext);
@@ -19,15 +20,10 @@ const CardDisplay = ({ todoData, modify, setModify }) => {
     })
       .then((res) => {
         dispatch({ type: 'UPDATE', payload: res.data });
-        e.target.checked
-          ? alert(`[${todoData.todo}] 를 완료했습니다.`)
-          : alert(`[${todoData.todo}] 를 시작해주세요!`);
       })
       .catch((error) => {
         e.target.checked = todoData.isCompleted;
-        alert(
-          `완료 처리를 실패하였습니다. \nERROR : ${error.response.data.message}`,
-        );
+        handleError(error);
       });
   };
 
@@ -39,9 +35,7 @@ const CardDisplay = ({ todoData, modify, setModify }) => {
         alert('할 일이 삭제되었습니다.');
       })
       .catch((error) => {
-        alert(
-          `삭제 처리를 실패하였습니다.\nERROR : ${error.response.data.message}`,
-        );
+        handleError(error);
       });
   };
 
